@@ -63,11 +63,11 @@ function cella(ctx, currentLine, lineNumber) {
     let nextLine = Array.apply(null, Array(400)).map(Number.prototype.valueOf, 0);
 
 
-    for (var i = 0; i < currentLine.length; i++) {
+    for (let i = 0; i < currentLine.length; i++) {
 
         // Check if the current array index value is one, if so plot a point.
         if (currentLine[i] == 1) {
-            draw_point(ctx, i, lineNumber);
+            setTimeout(() => draw_point(ctx, i, lineNumber), 100);
         }
 
         /*
