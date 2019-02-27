@@ -67,7 +67,7 @@ function cella(ctx, currentLine, lineNumber) {
 
         // Check if the current array index value is one, if so plot a point.
         if (currentLine[i] == 1) {
-            setTimeout(() => draw_point(ctx, i, lineNumber), 100);
+            setTimeout(() => draw_point(ctx, i, lineNumber), 0);
         }
 
         /*
