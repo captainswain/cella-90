@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>SAD Cella</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+
+<body>
+  <h1>SAD Cella</h1>
+  <canvas id="grid" width="400" height="400"></canvas>
+</body>
+<script src="../assets/draw-stuff.js"></script>
+<script>
+  // after "Introducing JavaScript Game Development" by Stuart.
+
+  // =====================================================  draw_title ====
+  // Draw filled rect.
+  function draw_title(context) {
+    context.save();
+    context.fillStyle = 'lightgrey';
+    context.font = "30px Arial";
+    context.fillText("Grid", 150, 140);
+    context.restore();
+  }
+  // =====================================================  Main ====
+  let og_array = Array.apply(null, Array(400)).map(Number.prototype.valueOf, 0);
+  og_array[200] = 1;
+  var canvas = document.getElementById("grid");
+  var context = canvas.getContext("2d");
+  // Draw a grid
+  // draw_grid( context, 10, 50, 'white', 'yellow' );
+  // draw_title( context );
+  window.addEventListener("load", function () {
+    cella(context, og_array, 0);
+
+  });
+</script>
+
+</html>
