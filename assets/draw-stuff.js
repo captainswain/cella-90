@@ -52,8 +52,59 @@ function draw_grid(rctx, rminor, rmajor, rstroke, rfill) {
     rctx.restore();
 }
 
+// Total seconds: 224.33826999994926
+// or 224338.26999994926155 ms
+function cella(ctx, currentLine) {
 
-function cella(ctx, currentLine, lineNumber) {
+    for (let i = 0; i < 400; i++) {
+
+        let nextLine = new Array(400).fill(0);
+
+        for (let j = 0; j < currentLine.length; j++) {
+
+            // Check if the current array index value is one, if so plot a point.
+            if (currentLine[j] == 1) {
+                setTimeout(() => draw_point(ctx, j, i), 0);
+            }
+
+            /*
+             get trio and typecast into string.
+             todo: Do bit math instead of string comparisons
+             */
+            let trio = "" + currentLine[j] + currentLine[j + 1] + currentLine[j + 2]
+
+
+            switch (trio) {
+                case "111":
+                    break;
+                case "110":
+                    nextLine[j + 1] = 1;
+                    break;
+                case "101":
+                    break;
+                case "100":
+                    nextLine[j + 1] = 1;
+                    break;
+                case "011":
+                    nextLine[j + 1] = 1;
+                    break;
+                case "010":
+                    break;
+                case "001":
+                    nextLine[j + 1] = 1;
+                    break;
+                case "000":
+                    break;
+                default:
+            }
+        }
+        currentLine = nextLine;
+    }
+}
+
+// total seconds: 226.87088500009849668
+// or 226870.88500009849668 ms
+function cella_recursive(ctx, currentLine, lineNumber) {
 
 
     // Base Case check if last line to draw
@@ -82,23 +133,19 @@ function cella(ctx, currentLine, lineNumber) {
                 break;
             case "110":
                 nextLine[i + 1] = 1;
-                console.log("new array index: " + (i + 1));
                 break;
             case "101":
                 break;
             case "100":
                 nextLine[i + 1] = 1;
-                console.log("new array index: " + (i + 1));
                 break;
             case "011":
                 nextLine[i + 1] = 1;
-                console.log("new array index: " + (i + 1));
                 break;
             case "010":
                 break;
             case "001":
                 nextLine[i + 1] = 1;
-                console.log("new array index: " + (i + 1));
                 break;
             case "000":
                 break;
